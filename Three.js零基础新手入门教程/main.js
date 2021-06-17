@@ -2,7 +2,7 @@
  * @Author: wuchen
  * @Date: 2021-06-17 16:46:34
  * @LastEditors: wuchen
- * @LastEditTime: 2021-06-17 17:50:06
+ * @LastEditTime: 2021-06-17 18:06:41
  * @Description: 
  * @Email: rangowu@163.com
  */
@@ -15,7 +15,7 @@
     const camera = new THREE.PerspectiveCamera(75,window.innerWidth/window.innerHeight,0.1,1000);
 
     // 创建ThreeJS渲染器
-    const renderer = new THREE.WebGLRenderer();
+    const renderer = new THREE.WebGLRenderer({antialias:true});
     // 设置渲染器场景的大小
     renderer.setSize(window.innerWidth,window.innerHeight);
     // 把渲染器添加到我们的页面中去
@@ -24,8 +24,10 @@
     // 创建基础几何模型
     // const geometry = new THREE.BoxGeometry('x轴的长','y轴的长','z轴的长')
     const geometry = new THREE.BoxGeometry(2,2,2);
+    // 创建问题贴图
+    const texture = new THREE.TextureLoader().load('image/1.png')
     // 创建材质
-    const meterial = new THREE.MeshBasicMaterial({color:0x00ff00});
+    const meterial = new THREE.MeshBasicMaterial({map:texture});
     // 创建网格对象
     const cube = new THREE.Mesh(geometry,meterial);
     // 把网格对象添加到场景中去
